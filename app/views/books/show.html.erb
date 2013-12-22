@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @book.name %>
+</p>
+
+<p>
+  <b>Author:</b>
+  <%= @book.author %>
+</p>
+
+<p>
+  <b>Cover:</b>
+  <%= image_tag @book.cover.url, :size => "200x200" %>
+	
+</p>
+<p>
+  <b>Musterlinks mit statischer Angabe:</b>
+  <br/>
+	<%= link_to image_tag("fragezeichen.png", :size => "25x25", :border=>1), "/books/ok.png" %>
+	<%= link_to image_tag("pdf2.png", :size => "25x25", :border=>1), "/books/musterpdf.pdf" %>
+	<br/>
+	
+	 
+	
+	<b>Modellbezogene Links:</b>
+	<%= link_to "Download - #{@book.cover_file_name}",  @book.cover.url(:original)  %>
+	<br/>
+	
+  
+
+
+</p>
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>

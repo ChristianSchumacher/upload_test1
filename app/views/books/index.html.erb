@@ -1,0 +1,43 @@
+
+	<legend>Suche nach Inhalten</legend>
+	<% form_tag({:action => :index}, :method => :get) do %>
+		<p><label>Suchbegriff</label>
+			<%= text_field_tag :search_item, '', :size => 20%> &nbsp;&nbsp;
+			<%= image_submit_tag("search.png", :border => 0, :height => '32', :width => '32') %>
+		</p>
+	<% end %> 
+
+
+<table border="6">
+  <tr>
+    <th>Dateien</th>
+    <th>Name</th>
+    <th>Author</th>
+    <th>File</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @books.each do |book| %>
+  <tr>
+    <td>
+		<%unless book.cover_content_type.nil?  %>
+			<%=  book.cover_content_type? ? link_to( image_tag( "file3.png", :size => "25x25", :border => 0 ), book  )  : ""  %>
+		<%end%>
+		</td>
+		
+		
+	<td><%= book.name %></td>
+    <td><%= book.author %></td>
+    <td><%= image_tag book.cover.url(:thumb) %></td>
+    <td><%= link_to 'Show', book %></td>
+    <td><%= link_to 'Edit', edit_book_path(book) %></td>
+    <td><%= link_to 'Destroy', book, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to( image_tag( "add.png", :size => "25x25", :border => 0 ),  new_book_path  )  %>

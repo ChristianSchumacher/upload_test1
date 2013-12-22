@@ -1,0 +1,11 @@
+<div class="searchform">
+<fieldset style="width:300px;">
+	<legend>Suche nach Inhalten</legend>
+	<%form_tag({:action => :index}, :method => :get) do %>
+		<p><label for="testd">Suchbegriff</label>
+			<%= text_field_tag :search_item, '', :size => 20%> 
+			<%= image_submit_tag("search.png", :size => "25x25", :border => 0) %>
+		</p>
+	<% end %>
+</fieldset>
+</div>
